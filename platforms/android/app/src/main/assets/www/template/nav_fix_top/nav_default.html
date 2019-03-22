@@ -1,0 +1,34 @@
+
+<style>
+    #nav_default{
+        background-color: #1074a6;
+        border-color: #1074a6;
+    }
+</style>
+
+<nav id="nav_default" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <button id="btnURLBack" type="button" class="btn btn-sm btn-default-inline navbar-btn">Home</button>
+
+        <img src="../assets/image/icon/ic_stat_logo_pu_notif.png" style="width: 30px;float: right;padding-top: 10px;">
+
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    function onBackKeyDown(e) {
+        e.preventDefault();
+        loadPageBack();
+    }
+
+    $('#btnURLBack').click(function () {
+        loadPageBack();
+    });
+    
+    function loadPageBack() {
+
+        window.location.replace('../template/template2.html?page=globalinfo');
+    }
+</script>
