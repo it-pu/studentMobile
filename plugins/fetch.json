@@ -38,5 +38,29 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-service-worker": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/MobileChromeApps/cordova-plugin-service-worker"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "es6-promise-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/vstirbu/PromisesPlugin.git"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@2.4.2"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -15,6 +15,12 @@
     },
     "cordova-plugin-background-mode": {
       "PACKAGE_NAME": "com.example.studentpu"
+    },
+    "cordova-plugin-service-worker": {
+      "PACKAGE_NAME": "com.example.studentpu"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.example.studentpu"
     }
   },
   "dependent_plugins": {
@@ -22,6 +28,9 @@
       "PACKAGE_NAME": "com.example.studentpu"
     },
     "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.example.studentpu"
+    },
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "com.example.studentpu"
     }
   }

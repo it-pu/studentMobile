@@ -1,5 +1,3 @@
-
-
 <div class="panelHead">
 
     <div class="row">
@@ -8,7 +6,7 @@
             <img src="../assets/image/icon/logo-header-hitam-putih.png" style="width: 145px;">
         </div>
         <div class="col-xs-4" style="text-align: right;">
-            <button class="btn btn-sm btn-default-inline"><i class="fa fa-user-o"></i></button>
+            <button class="btn btn-sm btn-default-inline" id="btnSetting"><i class="fa fa-cogs"></i></button>
         </div>
     </div>
 
@@ -52,11 +50,11 @@
                 </td>
                 <td>
                 <div class="g_titile"><i class="fa fa-reply" aria-hidden="true"></i> IPS</div>
-                <div class="g_val" id="viewIPK">0</div>
+                <div class="g_val" id="viewIPS">0</div>
                 </td>
                 <td>
                     <div class="g_titile">IPK</div>
-                    <div class="g_val" id="viewIPS">0</div>
+                    <div class="g_val" id="viewIPK">0</div>
                 </td>
             </tr>
         </table>
@@ -71,62 +69,7 @@
     <div id="viewGI_TodaySc"></div>
 
 
-
-
-
-    <div class="row listMenu">
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/1.png">
-                <div class="panel-menu-title">
-                    Timetables
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/2ok.png">
-                <div class="panel-menu-title">
-                    Exam Schedule
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/3.png">
-                <div class="panel-menu-title">
-                    Study Result
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row listMenu">
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/7.png">
-                <div class="panel-menu-title">
-                    Transcript
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/4.png">
-                <div class="panel-menu-title">
-                    Announcement
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="thumbnail panel-menu-core" data-page="timetables">
-                <img src="../assets/image/icon/new/5.png">
-                <div class="panel-menu-title">
-                    Financial
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="viewGI_Menu"></div>
 
     <div class="row">
         <div class="col-xs-12" style="text-align: center;margin-top: 20px;margin-bottom: 20px;">
@@ -138,6 +81,8 @@
             </p>
         </div>
     </div>
+
+    <textarea class="hide" id="ArrIDUnread"></textarea>
 
 </div>
 
@@ -152,8 +97,8 @@
 
         $('#viewSemester').html(dataUser.SemesterNow);
         $('#viewTotalCredit').html(dataUser.TotalCredit);
-        $('#viewIPK').html(dataUser.IPK);
         $('#viewIPS').html(dataUser.LastIPS);
+        $('#viewIPK').html(dataUser.IPK);
 
 
         $('.img-fitter').imgFitter({
@@ -167,10 +112,168 @@
 
         });
 
-        loadAnnouncement();
-        loadScheduleNow();
+        loadingMenu();
+
+        loadUnreadAnnouncement();
 
     });
+
+
+    function loadingMenu() {
+        var dv = '<div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '    <div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>'+
+            '    <div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core loading">' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>';
+        $('#viewGI_Menu').html(dv);
+    }
+
+    function loadMenu() {
+        var dv = '<div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Timetables" data-page="timetables">' +
+            '                <img src="../assets/image/icon/new/1.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Timetables' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Exam Schedule" data-page="examschedule">' +
+            '                <img src="../assets/image/icon/new/2ok.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Exam Schedule' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Study Result" data-page="studyresult">' +
+            '                <img src="../assets/image/icon/new/3.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Study Result' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '' +
+            '    <div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Transcript" data-page="transcript">' +
+            '                <img src="../assets/image/icon/new/7.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Transcript' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Announcement" data-page="announcement">' +
+            '                <img src="../assets/image/icon/new/4.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Announcement' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Financial" data-page="financial">' +
+            '                <img src="../assets/image/icon/new/5.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Financial' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '' +
+            '   <div class="row listMenu">' +
+            '        <div class="col-xs-4">' +
+            '            <div class="thumbnail panel-menu-core" data-title="Curriculum" data-page="curriculum">' +
+            '                <img src="../assets/image/icon/new/8.png">' +
+            '                <div class="panel-menu-title">' +
+            '                    Curriculum' +
+            '                </div>' +
+            '            </div>' +
+            '        </div>' +
+            '   </div>';
+
+        $('#viewGI_Menu').html(dv);
+
+        $('.panel-menu-core').click(function () {
+            var page = $(this).attr('data-page');
+            var title = $(this).attr('data-title');
+            var bt = 'default';
+            if(page=='announcement'){
+                bt = 'annc';
+                var data = {
+                    Icon : '<i class="fa fa-bookmark-o"></i>',
+                    URL : '../template/template2.html?page='+page+'&subpage=announcement_saved&b_t='+bt,
+                    Menu : 'Saved'
+                };
+                localStorage.setItem('announcement',JSON.stringify(data));
+            } else {
+                var data = {
+                    Title : title
+                };
+                localStorage.setItem('dataTopMenu',JSON.stringify(data));
+            }
+            window.location.href = '../template/template2.html?page='+page+'&b_t='+bt;
+
+        });
+    }
+
+    function loadUnreadAnnouncement () {
+        var url = base_url_server+'api2/__crudAnnouncement';
+
+        var data = {
+            action : 'showAnnc_UnreadOnly',
+            User : 'Std',
+            UserID : sessionNPM
+        };
+
+        var token = jwt_encode(data,'UAP)(*');
+        $.post(url,{token:token},function (jsonResult) {
+
+            var IDUnread = [];
+            if(jsonResult.length>0){
+                $('#viewTotalUnread').html('<span class="badge">'+jsonResult.length+' Unread</span>');
+
+                $.each(jsonResult,function (i, v) {
+                    IDUnread.push(v.IDAnnc);
+                });
+            }
+
+            $('#ArrIDUnread').val(JSON.stringify(IDUnread));
+            loadAnnouncement();
+
+        });
+    }
 
     function loadAnnouncement() {
         var url = base_url_server+'api3/__readGlobalInfo';
@@ -184,20 +287,21 @@
 
         var token = jwt_encode(data,'UAP)(*');
 
+        var ArrIDUnread = $('#ArrIDUnread').val();
+        var dataIDUnread = (ArrIDUnread!='' && ArrIDUnread!=null) ? JSON.parse(ArrIDUnread) : [];
+
         $.post(url,{token:token},function (jsonResult) {
 
             var Announcement = jsonResult.Announcement;
             $('#viewGI_Announcement').html('');
             if(Announcement.length>0){
 
-
-
                 $('#viewGI_Announcement').html('<div class="row">' +
                     '        <div class="col-xs-12">' +
                     '            <div class="thumbnail panel-announcement" style="padding: 0px;">' +
                     '                <div class="title-panel">' +
                     '                    <i class="fa fa-bullhorn margin-right"></i> Announcement' +
-                    '                    <a href="javascript:void(0);">' +
+                    '                    <a href="javascript:void(0);" id="showSavedAnnc">' +
                     '                        <div class="saved-annc">' +
                     '                            <i class="fa fa-bookmark">' +
                     '                                <div class="saved-annc-badge">0</div>' +
@@ -219,19 +323,49 @@
 
                     var title = (parseInt((v.Title.length)) > 30) ? v.Title.substr(0,30)+'..' : v.Title;
 
-                    var tokenShow = jwt_encode(v,'UAP)(*');
+                    var clUnread = ($.inArray(v.ID,dataIDUnread)!=-1) ? 'style="background: lightyellow;"' : '';
 
-                    $('#showAnnc').append('<a href="javascript:void(0);" class="list-group-item showAnnouncement" data-id="'+v.ID+'">' +
+                    $('#showAnnc').append('<a href="javascript:void(0);" '+clUnread+' class="list-group-item showAnnouncement" data-id="'+v.ID+'">' +
                         '                        <span class="numbering-annc">'+no+'</span>' +
                         '                        <span class="details-annc">'+title+'</span>' +
                         '                    </a>');
                     no++;
                 });
-                $('#showAnnc').append('<a href="#" class="list-group-item">' +
+
+                $('#showAnnc').append('<a href="javascript:void(0);" id="moreAnnouncement" class="list-group-item">' +
                     '                        Read more..' +
                     '                    </a>');
 
+                $('#moreAnnouncement').click(function () {
+                    var page = 'announcement';
+                    var bt = 'annc';
+
+                    var data = {
+                        Icon : '<i class="fa fa-bookmark-o"></i>',
+                        URL : '../template/template2.html?page='+page+'&subpage=announcement_saved&b_t='+bt,
+                        Menu : 'Saved'
+                    };
+                    localStorage.setItem('announcement',JSON.stringify(data));
+                    window.location.href = '../template/template2.html?page='+page+'&b_t='+bt;
+                });
+
+                $('#showSavedAnnc').click(function () {
+                    var page = 'announcement';
+                    var bt = 'annc';
+
+                    var data = {
+                        Icon : '<i class="fa fa-bullhorn"></i>',
+                        URL : '../template/template2.html?page='+page+'&b_t='+bt,
+                        Menu : 'List'
+                    };
+                    localStorage.setItem('announcement',JSON.stringify(data));
+
+                    window.location.href = '../template/template2.html?page='+page+'&subpage=announcement_saved&b_t='+bt;
+                });
+
             }
+
+            loadScheduleNow();
         });
 
     }
@@ -267,7 +401,7 @@
 
                     var course = v.CourseEng;
                     var time = v.StartSessions.substr(0,5)+' - '+v.EndSessions.substr(0,5);
-                    var sp = 'Meet : '+v.Meet+' | '+time+' | <i class="fa fa-map-marker"></i> '+v.Room;
+                    var sp = 'Sessions : '+v.Meet+'<sup>'+OrdNumber(v.Meet)+'</sup> | '+time+' | <i class="fa fa-map-marker"></i> '+v.Room;
 
                     var status = '';
                     if(v.StatusAttd!=null){
@@ -287,6 +421,10 @@
                 });
             }
 
+            setTimeout(function () {
+                loadMenu();
+            },1000);
+
         });
     }
 
@@ -299,13 +437,6 @@
             });
     });
 
-
-    $('.panel-menu-core').click(function () {
-        var page = $(this).attr('data-page');
-        var bt = 'default';
-        window.location.href = '../template/template2.html?page='+page+'&b_t='+bt;
-
-    });
 
 
     // Show Announcement
@@ -323,7 +454,8 @@
         var url = base_url_server+'api2/__crudAnnouncement';
 
         $.post(url,{token:token},function (jsonResult) {
-            console.log(jsonResult);
+
+            loadUnreadAnnouncement();
 
             var Ann = jsonResult.Annc[0];
             var Status = jsonResult.Status[0];
@@ -368,7 +500,7 @@
         var url = base_url_server+'api2/__crudAnnouncement';
 
         $.post(url,{token:token},function () {
-            loadAnnouncement();
+            loadUnreadAnnouncement();
             toastr.success('Saved','Success');
             setTimeout(function () {
                 var btnAct = (Status==2 || Status=='2')
@@ -384,10 +516,25 @@
     $('#btnLogOut').click(function () {
         loadModalLoading();
         localStorage.removeItem('Login');
+        document.addEventListener("backbutton", onBackKeyDown, false);
+        function onBackKeyDown(e) {
+            e.preventDefault();
+            window.location.replace('login.html');
+        }
         setTimeout(function () {
             window.location.replace('login.html');
         },1000);
 
+    });
+
+    // Buttin Setting
+    $('#btnSetting').click(function () {
+        var data = {
+            Title : 'Change Password'
+        };
+        localStorage.setItem('dataTopMenu',JSON.stringify(data));
+
+        window.location.href = '../template/template2.html?page=setting&subpage=changepassword&b_t=default';
     });
 
 

@@ -50,6 +50,52 @@ module.exports = [
       "cordova.plugins.backgroundMode",
       "plugin.backgroundMode"
     ]
+  },
+  {
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-service-worker.ServiceWorkerContainer",
+    "file": "plugins/cordova-plugin-service-worker/www/service_worker_container.js",
+    "pluginId": "cordova-plugin-service-worker",
+    "clobbers": [
+      "navigator.serviceWorker"
+    ]
+  },
+  {
+    "id": "cordova-plugin-service-worker.ServiceWorkerRegistration",
+    "file": "plugins/cordova-plugin-service-worker/www/service_worker_registration.js",
+    "pluginId": "cordova-plugin-service-worker",
+    "clobbers": [
+      "ServiceWorkerRegistration"
+    ]
+  },
+  {
+    "id": "cordova-plugin-service-worker.ServiceWorker",
+    "file": "plugins/cordova-plugin-service-worker/www/service_worker.js",
+    "pluginId": "cordova-plugin-service-worker",
+    "clobbers": [
+      "ServiceWorker"
+    ]
+  },
+  {
+    "id": "cordova-plugin-service-worker.kamino.js",
+    "file": "plugins/cordova-plugin-service-worker/www/kamino.js",
+    "pluginId": "cordova-plugin-service-worker",
+    "clobbers": [
+      "Kamino"
+    ]
+  },
+  {
+    "id": "cordova-plugin-statusbar.statusbar",
+    "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+    "pluginId": "cordova-plugin-statusbar",
+    "clobbers": [
+      "window.StatusBar"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -59,7 +105,10 @@ module.exports.metadata =
   "cordova-plugin-badge": "0.8.8",
   "cordova-plugin-local-notification": "0.9.0-beta.2",
   "cordova-plugin-whitelist": "1.3.3",
-  "cordova-plugin-background-mode": "0.7.2"
+  "cordova-plugin-background-mode": "0.7.2",
+  "es6-promise-plugin": "4.2.2",
+  "cordova-plugin-service-worker": "1.0.1",
+  "cordova-plugin-statusbar": "2.4.2"
 };
 // BOTTOM OF METADATA
 });

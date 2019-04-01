@@ -76,6 +76,58 @@ module.exports = [
         "id": "cordova-plugin-background-mode.BackgroundMode.Proxy",
         "pluginId": "cordova-plugin-background-mode",
         "runs": true
+    },
+    {
+        "file": "plugins/es6-promise-plugin/www/promise.js",
+        "id": "es6-promise-plugin.Promise",
+        "pluginId": "es6-promise-plugin",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-service-worker/www/service_worker_container.js",
+        "id": "cordova-plugin-service-worker.ServiceWorkerContainer",
+        "pluginId": "cordova-plugin-service-worker",
+        "clobbers": [
+            "navigator.serviceWorker"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-service-worker/www/service_worker_registration.js",
+        "id": "cordova-plugin-service-worker.ServiceWorkerRegistration",
+        "pluginId": "cordova-plugin-service-worker",
+        "clobbers": [
+            "ServiceWorkerRegistration"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-service-worker/www/service_worker.js",
+        "id": "cordova-plugin-service-worker.ServiceWorker",
+        "pluginId": "cordova-plugin-service-worker",
+        "clobbers": [
+            "ServiceWorker"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-service-worker/www/kamino.js",
+        "id": "cordova-plugin-service-worker.kamino.js",
+        "pluginId": "cordova-plugin-service-worker",
+        "clobbers": [
+            "Kamino"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
+        "id": "cordova-plugin-statusbar.StatusBarProxy",
+        "pluginId": "cordova-plugin-statusbar",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -85,7 +137,10 @@ module.exports.metadata =
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-background-mode": "0.7.2"
+    "cordova-plugin-background-mode": "0.7.2",
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-service-worker": "1.0.1",
+    "cordova-plugin-statusbar": "2.4.2"
 }
 // BOTTOM OF METADATA
 });

@@ -1,0 +1,53 @@
+{
+  "_from": "git+https://github.com/MobileChromeApps/cordova-plugin-service-worker.git",
+  "_id": "cordova-plugin-service-worker@1.0.1",
+  "_inBundle": false,
+  "_location": "/cordova-plugin-service-worker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/MobileChromeApps/cordova-plugin-service-worker",
+    "rawSpec": "https://github.com/MobileChromeApps/cordova-plugin-service-worker",
+    "saveSpec": "git+https://github.com/MobileChromeApps/cordova-plugin-service-worker.git",
+    "fetchSpec": "https://github.com/MobileChromeApps/cordova-plugin-service-worker.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/MobileChromeApps/cordova-plugin-service-worker.git#858c90db1e375c98849bd023d7e2273e09966fed",
+  "_spec": "https://github.com/MobileChromeApps/cordova-plugin-service-worker",
+  "_where": "C:\\xampp\\htdocs\\StudentPU",
+  "author": {
+    "name": "The Chrome Team"
+  },
+  "bugs": {
+    "url": "https://github.com/MobileChromeApps/cordova-plugin-serviceworker/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-service-worker",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Service Worker Plugin",
+  "homepage": "https://github.com/MobileChromeApps/cordova-plugin-serviceworker",
+  "keywords": [
+    "cordova",
+    "serviceworker",
+    "service",
+    "worker",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-service-worker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MobileChromeApps/cordova-plugin-serviceworker.git"
+  },
+  "version": "1.0.1"
+}
